@@ -61,7 +61,7 @@ namespace esphome
                 dataline = strtok(received_string, delimiter);
                 crcinfo = strtok(nullptr, delimiter);
 
-                crc16_hash = crc16((const uint8_t*)dataline, sizeof(dataline));
+                crc16_hash = crc16((const uint8_t*)dataline, 111);
 
                 ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
                 ESP_LOGD(TAG, "*fishboy* received dataline size: %i", sizeof(dataline));
