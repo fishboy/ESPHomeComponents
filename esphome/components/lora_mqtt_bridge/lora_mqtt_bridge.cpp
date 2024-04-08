@@ -19,6 +19,7 @@ namespace esphome
         {
             if (receivedLoRaP)
             {
+                ESP_LOGD(TAG, "*fishboy* received LoRa message...");
                 receivedLoRaP = false;
                 char received_string[251];
                 char config_topic[] = "%s/sensor/%s/%s/config";
@@ -48,6 +49,9 @@ namespace esphome
                 int argc;
                 this->split(tokens, &argc, received_string, ':', 1);
 
+                
+                ESP_LOGD(TAG, "*fishboy* received %i tokens.", argc);
+                
                 // if we didn't get 11 elements, this wasn't a message from our sensors
                 if (argc != 11)
                 {
