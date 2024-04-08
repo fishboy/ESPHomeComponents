@@ -58,7 +58,7 @@ namespace esphome
                 crcinfo = strtok(nullptr, delimiter);
                 received_crc = std::stoi(crcinfo);
                 
-                calculated_crc = crc16((const uint8_t*)dataline, 111);
+                calculated_crc = crc16((const uint8_t*)dataline, strlen(dataline));
                 
                 ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
                 ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", calculated_crc);                
