@@ -65,15 +65,16 @@ namespace esphome
                 received_crc = std::stoi(crcinfo);
                 
                 calculated_crc = crc16((const uint8_t*)dataline, 111);
-
                 
                 ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
-         //       ESP_LOGD(TAG, "*fishboy* received dataline length: %i", dataline.length());
-
                 ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", calculated_crc);                
                 ESP_LOGD(TAG, "*fishboy* received crc hash: %i", received_crc);
                 
-
+                if (calculated_crc == received_crc)
+                {
+                  ESP_LOGD(TAG, "*fishboy* CRCs match.  This is a valid packet.  Proceed.");
+                }
+                
 
 
                 
