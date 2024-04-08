@@ -52,22 +52,26 @@ namespace esphome
                 
 
                 
-                // split the CRC off the end
+                // calculate CRC anc compare to received CRC
                 char *dataline;
                 char *crcinfo;
-                uint16_t crc16_hash;
+                int received_crc;
+                uint16_t calculated_crc;
                 const char delimiter[2] = "~";
                 
+                // split data and CRC
                 dataline = strtok(received_string, delimiter);
                 crcinfo = strtok(nullptr, delimiter);
+                received_crc = std::stoi(crcinfo);
+                
+                calculated_crc = crc16((const uint8_t*)dataline, 111);
 
-                crc16_hash = crc16((const uint8_t*)dataline, 111);
-
+                
                 ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
          //       ESP_LOGD(TAG, "*fishboy* received dataline length: %i", dataline.length());
 
-                ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", crc16_hash);                
-                ESP_LOGD(TAG, "*fishboy* received crc hash: %s", crcinfo);
+                ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", calculated_crc);                
+                ESP_LOGD(TAG, "*fishboy* received crc hash: %i", received_crc);
                 
 
 
