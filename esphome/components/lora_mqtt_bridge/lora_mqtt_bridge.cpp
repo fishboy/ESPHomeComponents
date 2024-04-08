@@ -55,23 +55,18 @@ namespace esphome
                 // split the CRC off the end
                 char *dataline;
                 char *crcinfo;
+                uint16_t crc16_hash;
                 const char delimiter[2] = "~";
                 
                 dataline = strtok(received_string, delimiter);
                 crcinfo = strtok(nullptr, delimiter);
+
+                crc16_hash = crc16((const uint8_t*)dataline.c_str(), dataline.length());
+
+                ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
+                ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", crc16_hash);                
+                ESP_LOGD(TAG, "*fishboy* received crc hash: %s", crcinfo);
                 
-                ESP_LOGD(TAG, "*fishboy* dataline: %s", dataline);
-                ESP_LOGD(TAG, "*fishboy* crcinfo: %s", crcinfo);
-                
-//                int crcargc;
-//                this->split(crctokens, &crcargc, received_string, '~', 1);
-
-//                ESP_LOGI(TAG, "*fishboy* crctokens rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", crctokens[0], crctokens[1], crctokens[2], crctokens[3], crctokens[4], crctokens[5], crctokens[6], crctokens[7], crctokens[8], crctokens[9], crctokens[10]);
-
-
-
-
-
 
 
 
