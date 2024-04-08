@@ -52,7 +52,7 @@ namespace esphome
                 // split the CRC off the end
                 char *crctokens[13];
                 int crcargc;
-                this->split(crctokens, &crcargc, received_string, '#crc', 1);
+                this->split(crctokens, &crcargc, received_string, 'crc', 1);
 
                 ESP_LOGI(TAG, "*fishboy* crctokens rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", crctokens[0], crctokens[1], crctokens[2], crctokens[3], crctokens[4], crctokens[5], crctokens[6], crctokens[7], crctokens[8], crctokens[9], crctokens[10]);
 
