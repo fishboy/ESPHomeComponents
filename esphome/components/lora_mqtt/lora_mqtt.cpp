@@ -189,7 +189,7 @@ namespace esphome
 
             
             // Calculate CRC32 hash
-            uint32_t crc32_hash = crc32(line.c_str(), line.length());
+            uint32_t crc32_hash = crc16(line.c_str(), line.length());
 
             // Append the hash to the original message
             line += ":#crc:";
