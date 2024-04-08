@@ -179,7 +179,7 @@ namespace esphome
 
             
             // Append the hash to the original message
-            line += "#crc:";
+            line += "~";
             line += std::to_string(crc16_hash);
 
 
