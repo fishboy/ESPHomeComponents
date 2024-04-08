@@ -64,7 +64,7 @@ namespace esphome
                 crc16_hash = crc16((const uint8_t*)dataline, sizeof(dataline));
 
                 ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
-                ESP_LOGD(TAG, "*fishboy* received dataline size: %s", sizeof(dataline));
+                ESP_LOGD(TAG, "*fishboy* received dataline size: %i", sizeof(dataline));
 
                 ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", crc16_hash);                
                 ESP_LOGD(TAG, "*fishboy* received crc hash: %s", crcinfo);
