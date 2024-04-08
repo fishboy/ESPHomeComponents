@@ -16,7 +16,7 @@ namespace esphome
         static const char *const TAG = "lora_mqtt.sensor";
         void Lora_MQTTComponent::setup()
         {
-            ESP_LOGD(TAG, "Setting up LoRa-MQTT...");
+            ESP_LOGD(TAG, "*fishboy* Setting up LoRa-MQTT...");
             auto *cs_internal = (InternalGPIOPin *)_cs;
             int cs_pin = cs_internal->get_pin();
             auto *reset_internal = (InternalGPIOPin *)_reset;
@@ -28,7 +28,7 @@ namespace esphome
             if (!LoRa.begin(_frequency))
             {
                 this->mark_failed();
-                ESP_LOGE(TAG, "Error initializing LoRa");
+                ESP_LOGE(TAG, "*fishboy* Error initializing LoRa");
                 return;
             }
             LoRa.setSyncWord(_sync);
@@ -93,7 +93,7 @@ namespace esphome
             line += std::to_string(crc32_hash);
 
             
-            ESP_LOGI(TAG, "LoRa-MQTT Publish with CRC:  %s", line.c_str());
+            ESP_LOGI(TAG, "*fishboy* LoRa-MQTT Publish with CRC:  %s", line.c_str());
             LoRa.beginPacket();
             LoRa.print(line.c_str());
             LoRa.endPacket();
@@ -134,7 +134,18 @@ namespace esphome
             line += ESPHOME_BOARD;
             line += "::";
 
-            ESP_LOGI(TAG, "LoRa-MQTT Publish:  %s", line.c_str());
+
+            
+            // Calculate CRC32 hash
+            uint32_t crc32_hash = crc32(line.c_str(), line.length());
+
+            // Append the hash to the original message
+            line += ":#crc:";
+            line += std::to_string(crc32_hash);
+
+
+            
+            ESP_LOGI(TAG, "*fishboy* LoRa-MQTT Publish:  %s", line.c_str());
             LoRa.beginPacket();
             LoRa.print(line.c_str());
             LoRa.endPacket();
@@ -176,7 +187,17 @@ namespace esphome
             line += ESPHOME_BOARD;
             line += ":sensor:";
 
-            ESP_LOGI(TAG, "LoRa-MQTT Publish:  %s", line.c_str());
+            
+            // Calculate CRC32 hash
+            uint32_t crc32_hash = crc32(line.c_str(), line.length());
+
+            // Append the hash to the original message
+            line += ":#crc:";
+            line += std::to_string(crc32_hash);
+
+
+            
+            ESP_LOGI(TAG, "*fishboy* LoRa-MQTT Publish:  %s", line.c_str());
             LoRa.beginPacket();
             LoRa.print(line.c_str());
             LoRa.endPacket();
