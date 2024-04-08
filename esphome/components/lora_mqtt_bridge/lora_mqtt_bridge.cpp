@@ -43,12 +43,6 @@ namespace esphome
                 }
 
                 ESP_LOGI(TAG, "line str: %s", received_string);
-
-
-
-
-
-
                 
 
                 
@@ -72,11 +66,12 @@ namespace esphome
                 
                 if (calculated_crc == received_crc)
                 {
-                  ESP_LOGD(TAG, "*fishboy* CRCs match.  This is a valid packet.  Proceed.");
+                    ESP_LOGD(TAG, "*fishboy* CRCs match.  This is a valid packet.  Proceed.");
+                } else {
+                    ESP_LOGD(TAG, "*fishboy* CRC test failed!  This is not a valid packet.");
+                    return;
                 }
                 
-
-
                 
                 // tokenize the received string
                 char *tokens[13];
