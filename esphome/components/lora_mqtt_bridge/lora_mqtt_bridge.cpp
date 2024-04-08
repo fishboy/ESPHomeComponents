@@ -49,8 +49,12 @@ namespace esphome
                 int argc;
                 this->split(tokens, &argc, received_string, ':', 1);
 
+                
                 // split the CRC off the end
-//                char *crctokens[13];
+                char *dataline;
+                char *crcinfo;
+                dataline = strtok(received_string, '~');
+                ESP_LOGD(TAG, "*fishboy* dataline: %s", dataline);
 //                int crcargc;
 //                this->split(crctokens, &crcargc, received_string, '~', 1);
 
