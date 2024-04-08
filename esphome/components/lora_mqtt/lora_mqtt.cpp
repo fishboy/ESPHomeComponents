@@ -174,7 +174,7 @@ namespace esphome
             uint16_t crc16_hash = crc16((const uint8_t*)line.c_str(), line.length());
 
 
-            ESP_LOGI(TAG, "*fishboy* CRC:  %s", crc16_hash);
+            ESP_LOGI(TAG, "*fishboy* CRC:  %i", crc16_hash);
             ESP_LOGI(TAG, "*fishboy* Line:  %s", line.c_str());
 
             
