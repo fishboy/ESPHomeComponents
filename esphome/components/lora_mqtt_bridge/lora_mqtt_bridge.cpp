@@ -58,7 +58,7 @@ namespace esphome
                 const char delimiter[2] = "~";
                 
                 dataline = strtok(received_string, delimiter);
-                crcinfo = strtok(received_string, delimiter);
+                crcinfo = strtok(nullptr, delimiter);
                 
                 ESP_LOGD(TAG, "*fishboy* dataline: %s", dataline);
                 ESP_LOGD(TAG, "*fishboy* crcinfo: %s", crcinfo);
