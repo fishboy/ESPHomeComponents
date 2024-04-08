@@ -44,10 +44,12 @@ namespace esphome
 
                 ESP_LOGI(TAG, "line str: %s", received_string);
 
-                // tokenize the received string
-                char *tokens[13];
-                int argc;
-                this->split(tokens, &argc, received_string, ':', 1);
+
+
+
+
+
+                
 
                 
                 // split the CRC off the end
@@ -63,7 +65,18 @@ namespace esphome
 
 //                ESP_LOGI(TAG, "*fishboy* crctokens rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", crctokens[0], crctokens[1], crctokens[2], crctokens[3], crctokens[4], crctokens[5], crctokens[6], crctokens[7], crctokens[8], crctokens[9], crctokens[10]);
 
-                                
+
+
+
+
+
+
+
+                
+                // tokenize the received string
+                char *tokens[13];
+                int argc;
+                this->split(tokens, &argc, received_string, ':', 1);                
                 
                 ESP_LOGD(TAG, "*fishboy* received %i tokens.", argc);
                 
