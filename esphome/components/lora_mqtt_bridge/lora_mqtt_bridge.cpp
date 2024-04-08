@@ -50,15 +50,15 @@ namespace esphome
                 this->split(tokens, &argc, received_string, ':', 1);
 
                 // split the CRC off the end
-                char *crctokens[13];
-                int crcargc;
-                this->split(crctokens, &crcargc, received_string, '~', 1);
+//                char *crctokens[13];
+//                int crcargc;
+//                this->split(crctokens, &crcargc, received_string, '~', 1);
 
-                ESP_LOGI(TAG, "*fishboy* crctokens rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", crctokens[0], crctokens[1], crctokens[2], crctokens[3], crctokens[4], crctokens[5], crctokens[6], crctokens[7], crctokens[8], crctokens[9], crctokens[10]);
+//                ESP_LOGI(TAG, "*fishboy* crctokens rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", crctokens[0], crctokens[1], crctokens[2], crctokens[3], crctokens[4], crctokens[5], crctokens[6], crctokens[7], crctokens[8], crctokens[9], crctokens[10]);
 
                                 
                 
-              //  ESP_LOGD(TAG, "*fishboy* received %i tokens.", argc);
+                ESP_LOGD(TAG, "*fishboy* received %i tokens.", argc);
                 
                 // if we didn't get 11 elements, this wasn't a message from our sensors
                 if (argc != 11)
