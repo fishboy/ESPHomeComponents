@@ -42,7 +42,7 @@ namespace esphome
                     received_string[i] = (char)LoRa.read();
                 }
 
-                // ESP_LOGI(TAG, "line str: %s", received_string);
+                ESP_LOGI(TAG, "line str: %s", received_string);
 
                 // tokenize the received string
                 char *tokens[13];
