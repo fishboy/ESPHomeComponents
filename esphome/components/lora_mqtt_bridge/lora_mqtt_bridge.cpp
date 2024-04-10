@@ -46,7 +46,7 @@ namespace esphome
                 
 
                 
-                // calculate CRC anc compare to received CRC
+                // calculate CRC and compare to received CRC
                 char *dataline;
                 char *crcinfo;
                 int received_crc;
@@ -86,8 +86,18 @@ namespace esphome
                     return;
                 }
 
-                ESP_LOGI(TAG, "line rcv: %s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s", tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9], tokens[10]);
-
+                ESP_LOGI(TAG, "token 0: %s", tokens[0]);
+                ESP_LOGI(TAG, "token 1: %s", tokens[1]);
+                ESP_LOGI(TAG, "token 2: %s", tokens[2]);
+                ESP_LOGI(TAG, "token 3: %s", tokens[3]);
+                ESP_LOGI(TAG, "token 4: %s", tokens[4]);
+                ESP_LOGI(TAG, "token 5: %s", tokens[5]);
+                ESP_LOGI(TAG, "token 6: %s", tokens[6]);
+                ESP_LOGI(TAG, "token 7: %s", tokens[7]);
+                ESP_LOGI(TAG, "token 8: %s", tokens[8]);
+                ESP_LOGI(TAG, "token 9: %s", tokens[9]);
+                ESP_LOGI(TAG, "token 10: %s", tokens[10]);
+                
                 // check for binary_sensor or sensor
                 message_type = tokens[2];
                 if (message_type.compare("binary_sensor") == 0)
