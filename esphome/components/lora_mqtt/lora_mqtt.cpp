@@ -84,6 +84,20 @@ namespace esphome
             line += ESPHOME_BOARD;
             line += "::";
 
+            
+            // Calculate CRC32 hash
+            uint16_t crc16_hash = crc16((const uint8_t*)line.c_str(), line.length());
+
+
+            ESP_LOGD(TAG, "*fishboy* CRC:  %i", crc16_hash);
+            ESP_LOGD(TAG, "*fishboy* Line:  %s", line.c_str());
+
+            
+            // Append the hash to the original message
+            line += "~";
+            line += std::to_string(crc16_hash);
+
+            
 
             ESP_LOGI(TAG, "*fishboy* LoRa-MQTT Publish with CRC:  %s", line.c_str());
             LoRa.beginPacket();
@@ -126,6 +140,19 @@ namespace esphome
             line += ESPHOME_BOARD;
             line += "::";
 
+            
+            // Calculate CRC32 hash
+            uint16_t crc16_hash = crc16((const uint8_t*)line.c_str(), line.length());
+
+
+            ESP_LOGD(TAG, "*fishboy* CRC:  %i", crc16_hash);
+            ESP_LOGD(TAG, "*fishboy* Line:  %s", line.c_str());
+
+            
+            // Append the hash to the original message
+            line += "~";
+            line += std::to_string(crc16_hash);
+            
             
             ESP_LOGI(TAG, "*fishboy* LoRa-MQTT Publish:  %s", line.c_str());
             LoRa.beginPacket();
@@ -174,8 +201,8 @@ namespace esphome
             uint16_t crc16_hash = crc16((const uint8_t*)line.c_str(), line.length());
 
 
-            ESP_LOGI(TAG, "*fishboy* CRC:  %i", crc16_hash);
-            ESP_LOGI(TAG, "*fishboy* Line:  %s", line.c_str());
+            ESP_LOGD(TAG, "*fishboy* CRC:  %i", crc16_hash);
+            ESP_LOGD(TAG, "*fishboy* Line:  %s", line.c_str());
 
             
             // Append the hash to the original message
