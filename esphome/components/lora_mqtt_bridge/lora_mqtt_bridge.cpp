@@ -19,7 +19,7 @@ namespace esphome
         {
             if (receivedLoRaP)
             {
-                ESP_LOGD(TAG, "*fishboy* received LoRa message...");
+                //ESP_LOGD(TAG, "*fishboy* received LoRa message...");
                 receivedLoRaP = false;
                 char received_string[251];
                 char config_topic[] = "%s/sensor/%s/%s/config";
@@ -60,15 +60,15 @@ namespace esphome
                 
                 calculated_crc = crc16((const uint8_t*)dataline, strlen(dataline));
                 
-                ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
-                ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", calculated_crc);                
-                ESP_LOGD(TAG, "*fishboy* received crc hash: %i", received_crc);
+                //ESP_LOGD(TAG, "*fishboy* received dataline: %s", dataline);
+                //ESP_LOGD(TAG, "*fishboy* calculated crc hash: %i", calculated_crc);                
+                //ESP_LOGD(TAG, "*fishboy* received crc hash: %i", received_crc);
                 
                 if (calculated_crc == received_crc)
                 {
-                    ESP_LOGD(TAG, "*fishboy* CRCs match.  This is a valid packet.  Proceed.");
+                    ESP_LOGD(TAG, "CRCs match.  This is a valid packet.  Proceed.");
                 } else {
-                    ESP_LOGD(TAG, "*fishboy* CRC test failed!  This is not a valid packet.");
+                    ESP_LOGD(TAG, "CRC test failed!  This is not a valid packet.");
                     return;
                 }
                 
@@ -78,7 +78,7 @@ namespace esphome
                 int argc;
                 this->split(tokens, &argc, received_string, ':', 1);                
                 
-                ESP_LOGD(TAG, "*fishboy* received %i tokens.", argc);
+                //ESP_LOGD(TAG, "received %i tokens.", argc);
                 
                 // if we didn't get 11 elements, this wasn't a message from our sensors
                 if (argc != 11)
